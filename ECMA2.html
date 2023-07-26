@@ -6,66 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    <div id = "root">
-        <div>
-            <div>
-                <p class = "eee">wewe</p>
-            </div>
-            <div>
-                 <a class = "aaa">34333</a>
-                 <a class = "aaa">wwrwer</a>
-            </div>
-        </div>
-    </div>
      <script>
-    //1 задание
-    console.log(Math.min(...[1,5,7,9]));
-    //2 задание
-    Createcounter = () =>{
-        let counter = 0;
-        return {
-            increment:()=> {return counter++},
-            decrement:()=> {return counter--}
-        }
-    }
-    let schet = Createcounter();
-    schet.decrement();
-    schet.decrement();
-    schet.decrement();
-    schet.increment();
-    let schet1 = Createcounter();
-    schet1.increment();
-    console.log(schet.decrement());
-    console.log(schet1.increment());
-    //3 задание
-    let Rootelement = document.querySelector("#root");
-    let classname = "aaa";
-    function findElementByClass(Rootelement,classname) {
-        if(Rootelement.classList.contains(classname))
-        return Rootelement;
-        else {
-            if(Rootelement.firstElementChild != null){
-                return findElementByClass(Rootelement.firstElementChild,classname);
-
+        class Book {
+            constructor(title,author,pages){
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
             }
-            else if (Rootelement.nextelementSibling != null)
-                return findElementByClass(Rootelement.nextElementSibling,classname);
-                else {
-                    Rootelement = Rootelement.parentElement;
-                    while (Rootelement.nextElementSibling == null)
-                    Rootelement = Rootelement.parentElement;
-                    return findElementByClass(Rootelement.nextElementSibling,classname);
-                }
-              
-
-        }
+            displayinfo() {
+                console.log(`Название ${this.title}`+'\n'+`Автор ${this.author}`+'\n'+`pages ${this.pages}`);
+        } 
     }
-        let krk = document.querySelector("#root");    
-        console.log(findElementByClass(krk,classname));
+        const a = new Book("bubu","I am",1000);
+        a.displayinfo();
+        class Student {
+            constructor(name,age,grade){
+                this.name = name;
+                this.age = age;
+                this.grade = grade;
+            }
+            displayinfo()
+            {
+                console.log(`Имя ${this.name}`+'\n'+`Возраст ${this.age}`+'\n'+`Класс ${this.grade}`);
+            }
+        }
+        const b = new Student ("John",22,"10");
+        b.displayinfo();
         
-
-    
-
     </script>
     
 </body>
