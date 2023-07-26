@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>", initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       class Employee{
+        constructor(name){
+            this.name = name;
+        }
+        displayinfo()
+        {
+            console.log(this.name);
+        }
+       } 
+       class Manager extends Employee{
+        constructor(name,departament){
+            super(name);
+            this.departament = departament;
+        }
+        displayinfo(){
+            console.log(this.name,this.departament);
+        }
+       }
+       const Boris = new Manager("Борис","Закупки");
+       Boris.displayinfo();
+       class Order{
+        constructor(name,price){
+            this.name = name;
+            this.price = price;
+        }
+        Products = [];
+        AllPrice =0;
+        addProduct(tovar)
+        {   
+            this.Products.push(tovar);
+        }
+        getTotalPrice(){
+            for(let i in this.Products)
+            this.AllPrice +=this.Products[i].price;
+            console.log(this.AllPrice);
+        }
+       }
+       class Product{
+        constructor(name,price)
+        {
+            this.name = name;
+            this.price = price;
+        }
+       }
+       const pe4enka = new Product("Печенька",10000);
+       const Meet = new Product("Мясо",600);
+       const Zakaz = new Order(12435);
+       const Snikers = new Product("Сникерс",67);
+       Zakaz.addProduct(pe4enka);
+       Zakaz.addProduct(Meet);
+       Zakaz.addProduct(Snikers);
+       Zakaz.getTotalPrice();
+    </script>
+</body>
+</html>
