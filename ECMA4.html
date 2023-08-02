@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    .block{
+        border:1px solid black;
+    }
+</style>
+
+    <script type = "module">
+        const body = document.querySelector("body");
+        const url = "https://jsonplaceholder.typicode.com/users";
+        const getData = async(url)=>{
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        }
+        try{
+        const Usersdata = await getData(url);
+        Usersdata.forEach(element => {
+            let block = document.createElement("div");
+            block.classList.add("block");
+            body.appendChild(block);
+            for(let i in element){
+            block.insertAdjacentHTML("beforeend",`<p>${i} - ${element[i]}</p>`);}
+            let but = document.createElement("button");
+            but.textContent = "Delete";
+            block.appendChild(but);
+            localStorage.setItem(element.id,JSON.stringify(element));
+            block.id = element.id;
+            })
+        
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach(element =>{
+            element.addEventListener("click",function(event){
+                const deleteUser = event.target.parentNode;
+                console.log(deleteUser);
+                deleteUser.remove();
+                localStorage.removeItem(deleteUser.id);
+            })
+        })
+    }
+        
+        catch(error){
+            console.log("Все пропало");
+        }
+            </script>
+    
+</body>
+</html>
